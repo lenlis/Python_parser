@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        DIV {
+            align-items: center;
+            text-align: center;
+            font-family: Verdana;
+        }
+
+        TABLE {
+            border-collapse: collapse;
+            border: 1px solid #000;
+        }
+
+        .first_double_table {
+            float: left;
+            margin-left: 100px;
+            margin-right: 50px;
+        }
+
+        .second_double_table {
+            float: left;
+        }
+
+        TD,
+        TH {
+            padding: 5px;
+            border: 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Аналитика по зарплатам и городам для <br> профессии {{prof}}</h1>
+        <img src="file:///D:/PythonProject/report/graph.png">
+        <h2>Статистика по годам</h2>
+        <table>
+            <tr style="font-style: bolt;">
+                <th>Год</th>
+                <th>Средняя зарплата</th>
+                <th>Средняя зарплата - Программист</th>
+                <th>Количество вакансий</th>
+                <th>Количество вакансий - Программист</th>
+            </tr>
+            {% for row in year_rows %}
+            <tr>
+                {% for cell in row %}
+                <td>{{cell}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        <h2>Статистика по городам</h2>
+        <table class="first_double_table">
+            <tr style="font-style: bolt;">
+                <th>Город</th>
+                <th>Уровень зарплат</th>
+            </tr>
+            {% for row in first_city_rows %}
+            <tr>
+                {% for cell in row %}
+                <td>{{cell}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        <table class="second_double_table">
+            <tr style="font-style: bolt;">
+                <th>Город</th>
+                <th>Доля вакансий</th>
+            </tr>
+            {% for row in second_city_rows %}
+            <tr>
+                {% for cell in row %}
+                <td>{{cell}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+
+</html>
