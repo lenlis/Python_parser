@@ -311,7 +311,7 @@ class InputConect:
     def input(self):
         self.name = input("Введите название файла: ")
         self.prof_name = input("Введите название профессии: ")
-        self.command = input("Введите команду(Вакансии или Статистика): ")
+        self.command = input("Введите команду вывода(Вакансии или Статистика): ")
         if self.command not in ['Вакансии', 'Статистика']:
             print('invalid command')
             sys.exit()
