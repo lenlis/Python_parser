@@ -306,13 +306,17 @@ valuta_description = {
 class InputConect:
     name = ''
     prof_name = ''
+    command = ''
 
     def input(self):
         self.name = input("Введите название файла: ")
         self.prof_name = input("Введите название профессии: ")
+        self.command = input("Введите команду вывода(Вакансии или Статистика): ")
+        if self.command not in ['Вакансии', 'Статистика']:
+            print('invalid command')
+            sys.exit()
 
-    @staticmethod
-    def print_vacancies():
+    def print_vacancies(self):
         print("Динамика уровня зарплат по годам: {0}".format(all_salery_by_year).replace("'", ''))
         print(
             "Динамика количества вакансий по годам: {0}".format(num_by_year).replace("'", ''))
@@ -322,9 +326,11 @@ class InputConect:
             profession_count_by_year).replace("'", ''))
         print("Уровень зарплат по городам (в порядке убывания): {0}".format(sorted_salery_by_city))
         print("Доля вакансий по городам (в порядке убывания): {0}".format(sorted_share_by_city))
-        Report.generate_excel()
-        Report.generate_image()
-        Report.generate_pdf()
+        if self.command == 'Вакансии':
+            Report.generate_excel()
+        else:
+            Report.generate_image()
+        # Report.generate_pdf()
 
 
 start = InputConect()
